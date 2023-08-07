@@ -1,0 +1,109 @@
+{% extends 'layout.html' %}
+{% load static %}
+
+{% block content %}
+<h1>Speed Trace</h1>
+<div class="form-container">
+    <form method="POST" action="{% url 'speed_trace' %}">
+    {% csrf_token %}
+    <label for="year">Year:</label >
+    <select name="year" id="year" class="form-select">
+        {% for year in years %}
+            <option value="{{ year }}">{{ year }}</option>
+        {% endfor %}
+    </select>
+    <br>
+    <label for="race">Race:</label>
+    <select name="race" id="race" class="form-select">
+        {% if races %}
+            {% for race in races %}
+                <option value="{{ race }}">{{ race }}</option>
+            {% endfor %}
+        {% endif %}
+    </select>
+    <br>
+    <!-- Add dropdowns for driver selection -->
+    <label for="driver1">Driver 1:</label>
+    <select name="driver1" id="driver1" class="form-select">
+    {% if drivers %}
+        {% for driver in drivers %}
+            <option value="{{ driver }}">{{ driver }}</option>
+        {% endfor %}
+    {% endif %}
+    </select>
+    <br>
+    <label for="driver2">Driver 2:</label>
+    <select name="driver2" id="driver2" class="form-select">
+    {% if drivers %}
+        {% for driver in drivers %}
+            <option value="{{ driver }}">{{ driver }}</option>
+        {% endfor %}
+    {% endif %}
+    </select>
+    <br>
+    <button type="submit" class="btn btn-danger btn-sm">Generate Visualization</button>
+    </form>
+
+    {% if speed_plot %}
+    <div>
+        <img src="data:image/png;base64,{{ speed_plot }}" alt="Speed Plot" class="dataimg">
+    </div>
+    {% endif %}
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('#year').change(function() {
+            var year = $(this).val();
+            $.ajax({
+        url: "{% url 'get_races' %}",
+        type: "GET",
+        data: {
+        'year': year
+        },
+        success: function(response) {
+        var raceSelect = $('#race');
+        raceSelect.empty();
+        $.each(response.races, function(index, race) {
+            raceSelect.append($('<option>').val(race).text(race));
+        });
+        },
+        error: function(xhr, status, error) {
+        console.error(xhr.responseText);
+        }
+        });
+        });
+    });
+
+</script>
+
+<script>
+   $(document).ready(function() {
+        $('#year').change(function() {
+            var year = $(this).val();
+            $.ajax({
+        url: "{% url 'get_drivers' %}",
+        type: "GET",
+        data: {
+        'year': year
+        },
+        success: function(response) {
+            var driverSelect1 = $('#driver1');
+            var driverSelect2 = $('#driver2');
+            driverSelect1.empty();
+            driverSelect2.empty();
+            $.each(response.drivers, function(index, driver) {
+                driverSelect1.append($('<option>').val(driver).text(driver));
+                driverSelect2.append($('<option>').val(driver).text(driver));
+            });
+        },
+        error: function(xhr, status, error) {
+            console.error(xhr.responseText);
+        }
+    });
+});
+   });
+</script>
+
+{% endblock %}

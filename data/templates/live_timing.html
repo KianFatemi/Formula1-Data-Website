@@ -1,0 +1,47 @@
+{% extends 'layout.html' %}
+{% load static %}
+
+{% block content %}
+<style>
+    table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+    th, td {
+        padding: 8px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+    }
+</style>
+<h1>Live Timing</h1>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Driver</th>
+                <th>Position</th>
+                <th>Lap Time</th>
+                <th>Sector 1</th>
+                <th>Sector 2</th>
+                <th>Sector 3</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% if cars_data %}
+                {% for car in cars_data %}
+                    <tr>
+                        <td>{{ car.Driver.FullName }}</td>
+                        <td>{{ car.Position }}</td>
+                        <td>{{ car.LastLapTime }}</td>
+                        <td>{{ car.S1Time }}</td>
+                        <td>{{ car.S2Time }}</td>
+                        <td>{{ car.S3Time }}</td>
+                    </tr>
+                {% endfor %}
+            {% else %}
+                <tr>
+                    <td colspan="6">No live timing data available</td>
+                </tr>
+            {% endif %}
+        </tbody>
+    </table>
+{% endblock %}
