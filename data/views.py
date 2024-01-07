@@ -61,7 +61,7 @@ def laptimes_distribution(request):
 
             # Convert timedelta to float in seconds
             driver_laps["LapTime(s)"] = driver_laps["LapTime"].dt.total_seconds()
-            print("----------\n", driver_laps['LapTime(s)'])
+            
             sns.violinplot(data=driver_laps,
                         x="Driver",
                         y="LapTime(s)",
@@ -71,7 +71,7 @@ def laptimes_distribution(request):
                         palette=list(driver_colors.values())
                         )
             
-            print("----------After\n", driver_laps)
+            
             sns.swarmplot(data=driver_laps,
                         x="Driver",
                         y="LapTime(s)",
