@@ -47,12 +47,12 @@
             list-style-type: none;
             margin: 0;
             padding: 0;
-            text-align: left;
+            text-align: center;
         }
 
         nav ul li {
             display: inline-block;
-            margin-right: 20px; /* Increase the margin value as needed */
+            margin-right: 70px; /* Increase the margin value as needed */
             padding: 10px 20px;
             transition: background-color 0.3s;
         }
@@ -71,6 +71,8 @@
         main {
             background-color: #fff;
             padding: 20px;
+            position: relative;
+            min-height: 100vh;
         }
 
         /* Footer */
@@ -89,6 +91,10 @@
         button{
             width: 200px;
 
+        }
+
+        .section{
+            padding: 10px;
         }
 
         .form-container {
@@ -119,6 +125,25 @@
             margin-bottom: 20px;
         }
     }
+
+        footer {
+            position: absolute;
+            width: 100%;         
+        }
+
+        .featured-images {
+            display: flex;
+    }
+
+         .featured-image {
+            flex: 1;
+            margin-right: 20px; /* Adjust the margin as needed */
+    }
+
+        .image {
+            width: 100%;
+            height: auto;
+    }
         
 
         /* Custom Styles for Specific Pages */
@@ -138,7 +163,6 @@
                 <li><a href="{% url 'speed_trace' %}">Speed Comparison</a></li>
                 <li><a href="{% url 'qualifying_results' %}">Qualifying Results</a></li>
                 <li><a href="{% url 'position_changes' %}">Position Changes</a></li>
-                <li><a href="{% url 'live_timing' %}">Live Timings</a></li>
             </ul>
         </div>
     </nav>
@@ -150,7 +174,7 @@
     </main>
     <footer>
         <div class="container">
-            &copy; 2023 Your Website Name. All rights reserved.
+            &copy; By Kian Fatemi
         </div>
     </footer>
 </body>

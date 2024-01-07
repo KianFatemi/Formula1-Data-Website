@@ -8,7 +8,6 @@ urlpatterns = [
     path('get-drivers/', views.get_drivers, name="get_drivers"),
     path('speedtrace/', views.speed_trace, name='speed_trace'),
     path('qualifyingresults', views.qualifying_results, name="qualifying_results"),
-    path('livetiming/', views.live_timing, name='live_timing'),
     path('positionchanges/', views.position_changes, name='position_changes'),
     path('error/', views.error_page, name='error_page')
 ]

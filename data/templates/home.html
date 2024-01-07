@@ -2,20 +2,34 @@
 {% load static %}
 
 {% block content %}
-    <h1>Welcome to Formula 1 Data Visualization</h1>
+    <div class="section">
+        <h1>Welcome to Formula 1 Data Visualization</h1>
+        
+        <p>
+            Formula 1 Data Visualization provides in-depth analysis and visualization of Formula 1 data. 
+            This website offers a range of insights and visualizations that help fans better understand the world of Formula 1 racing.
+        </p>
+    </div>
     
-    <p>Formula 1 Data Visualization, provides in-depth analysis and visualization of Formula 1 data. This website offers a range of insights and visualizations that help fans better understand the world of Formula 1 racing.</p>
-    
-    <h2>Highlights and Featured Content</h2>
-    <div style="display: flex;">
-        <div style="flex: 1;">
-            <img src="{% static 'speedtrace.png' %}" alt="Speed Trace Image" style="width: 600px;">
-        </div>
-        <div style="flex: 1;">
-            <img src="{% static 'laptimes.png' %}" alt="Laptimes Image" style="width: 850px;">
+    <div class="section">
+        <h2>Highlights and Featured Content</h2>
+        
+        <div class="featured-images">
+            <div class="featured-image">
+                <img src="{% static 'speedtrace.png' %}" alt="Speed Trace Image" class="image">
+            </div>
+            <div class="featured-image">
+                <img src="{% static 'laptimes.png' %}" alt="Laptimes Image" class="image">
+            </div>
         </div>
     </div>
     
-    <h3>Data Visualizations</h3>
-    <p>Discover visualizations that bring Formula 1 data to life. This website's visualizations present data in an informative way, allowing you to explore and analyze various aspects of the sport.</p>
+    <div class="section">
+        <h3>Data Visualizations</h3>
+        
+        <p>
+            Discover visualizations that bring Formula 1 data to life. 
+            This website's visualizations present data in an informative way, allowing you to explore and analyze various aspects of the sport.
+        </p>
+    </div>
 {% endblock %}
