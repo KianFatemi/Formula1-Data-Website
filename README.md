@@ -46,3 +46,12 @@ python manage.py migrate
 
 # Start development server
 python manage.py runserve
+```
+## Usage
+Open http://127.0.0.1:8000/ in your browser
+
+Choose a season, Grand Prix, and driver(s)
+
+Select the graph type you want to view
+
+Analyze lap-by-lap data and driver performance
