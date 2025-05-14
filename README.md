@@ -36,19 +36,19 @@ cd Formula1-Data-Website
 
 # Create and activate virtual environment
 python -m venv venv
-source venv/bin/activate   # On Windows: venv\Scripts\activate
+source venv/bin/activate  
 
-# Install dependencies manually
-pip install django fastf1 matplotlib plotly
+# Install dependencies
+pip install -r requirements.txt
 
 # Run Django migrations
 python manage.py migrate
 
 # Start development server
-python manage.py runserve
+python manage.py runserver
 ```
 ## Usage
-Open http://127.0.0.1:8000/ in your browser
+Open http://127.0.0.1:8000/speedtrace in your browser
 
 Choose a season, Grand Prix, and driver(s)
 
